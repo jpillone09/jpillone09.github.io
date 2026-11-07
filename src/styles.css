@@ -143,3 +143,8 @@ body,.desktop,.win,.bar,.dock,.note{transition:background-color .35s,color .35s,
 .gallery img{display:block;width:100%;border-radius:14px;border:1.5px solid rgba(var(--ink-rgb),.2)}
 .gallery figcaption{margin-top:4px;opacity:.75}
 .proj ul{margin:0;padding-left:20px;line-height:1.6}
+
+/* v11: screenshot strip handles both phone and wide shots */
+.gallery{align-items:flex-start}
+.gallery figure{width:auto}
+.gallery img{width:auto;height:auto;max-height:320px;max-width:min(380px,80vw)}
