@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { AnimatePresence } from "framer-motion";
 import { Widgets } from "./components/Widgets";
+import { Leaves } from "./components/Leaves";
 import { StatusBar } from "./components/StatusBar";
 import { Note } from "./components/Note";
 import { Dock } from "./components/Dock";
@@ -48,6 +49,7 @@ export default function App() {
 
   return (
     <div className="desktop" onContextMenu={(e) => { e.preventDefault(); setMenu({ x: e.clientX, y: e.clientY }); }} onClick={() => setMenu(null)}>
+      <Leaves />
       <StatusBar theme={theme} onToggle={toggle} />
       <Note />
       <Widgets />
