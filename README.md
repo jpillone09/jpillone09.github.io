@@ -13,3 +13,6 @@ Anything in [brackets] is a placeholder. Your portrait is `public/murphy.png`.
 ## Add project screenshots and links
 1. Put images in `public/projects/<project-id>/` (e.g. `public/projects/artifact/1.jpg`).
 2. In `src/data/content.ts`, set `shots: [{ src: "/projects/artifact/1.jpg", caption: "Welcome screen" }]`, `repo: "https://github.com/jpillone09/<repo>"` and optionally `demo: "https://..."`.
+
+## Deploy to GitHub Pages
+See the steps in `.github/workflows/deploy.yml`: push to `main`, then set Settings > Pages > Source to "GitHub Actions".
