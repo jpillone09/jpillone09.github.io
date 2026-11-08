@@ -7,7 +7,7 @@ export function About() {
       </figure>
       <div>
         <h1>Hi, I'm Murphy!</h1>
-        <p className="sub">Computer Science Student | Aspiring Business Analyst</p>
+        <p className="sub">Computer Science Student | Passionate about Technology, Innovation, and Problem-Solving</p>
         <p>I'm a Computer Science student at Far Eastern University Alabang, specializing in Software Engineering.</p>
         <p>I'm interested in software development and technology, from game development and web development to video editing.
           and gaining inspiration from the world of technology. I enjoy learning new skills and applying them to real-world projects, 
