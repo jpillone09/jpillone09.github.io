@@ -31,10 +31,10 @@ export const skills: Record<string, string[]> = {
 };
 // Paste each certificate's verification / badge link into url. Without a url it shows as plain text.
 export const certs: { name: string; url?: string }[] = [
-  { name: "Certiport IT Specialist – Java", url: "" },
-  { name: "Certiport IT Specialist – Python", url: "" },
+  { name: "Certiport IT Specialist – Java", url: "https://drive.google.com/file/d/1nwJGoDTWZyrUVFWnJ6jpkK9TPOHqcn1M/view?usp=sharing" },
+  { name: "Certiport IT Specialist – Python", url: "https://drive.google.com/file/d/1aAWw2NWVq19Pt0kNV4f99du76tSpHBGN/view?usp=sharing" },
   { name: "Cisco Networking Specialist", url: "" },
-  { name: "Certificate of Excellence – Design Thinking", url: "" },
+  { name: "Certificate of Excellence – Design Thinking", url: "https://drive.google.com/file/d/1RNaF8A5IzoaONrobj2FmAwMjYTw1fdC9/view?usp=sharing" },
 ];
 export const note = { title: "Currently", items: ["Studying Software Engineering", "Studying Business Analytics", "Building this portfolio"] };
 export const githubUser = "jpillone09";
