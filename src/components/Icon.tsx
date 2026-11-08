@@ -22,6 +22,7 @@ const P = {
   volume: <><path className="acc" d="M4 9.5v5h3.5l4.5 4v-13l-4.5 4z" /><path d="M15.500 9a4 4 0 0 1 0 6M18 6.500a8 8 0 0 1 0 11" /></>,
   mute: <><path className="acc" d="M4 9.5v5h3.5l4.5 4v-13l-4.5 4z" /><path d="M16 9.500l5 5M21 9.500l-5 5" /></>,
   back: <path d="M19 12H5M11 6l-6 6 6 6" />,
+  search: <><circle className="acc" cx="11" cy="11" r="6.500" /><path d="M16 16l4.500 4.500" /></>,
   external: <path d="M14 4h6v6M20 4l-9 9M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4" />,
 };
 export type IconName = keyof typeof P;

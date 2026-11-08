@@ -1,12 +1,19 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Icon } from "../components/Icon";
 import { projects } from "../data/content";
 
-export function Workfolio() {
-  const [sel, setSel] = useState<string | null>(null);
+// n changes on every request, so searching for the same project twice still re-opens it.
+export interface ProjectReq { id: string; n: number }
+
+export function Workfolio({ request }: { request?: ProjectReq | null }) {
+  const [sel, setSel] = useState<string | null>(() => request?.id ?? null);
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => { if (request) setSel(request.id); }, [request]);
+  // Start each view at the top instead of keeping the previous scroll position.
+  useEffect(() => { ref.current?.closest(".body")?.scrollTo(0, 0); }, [sel]);
   const p = projects.find((x) => x.id === sel);
   if (p) return (
-    <div className="proj">
+    <div className="proj" ref={ref}>
       <button className="back" onClick={() => setSel(null)}><Icon name="back" size={16} /> Projects</button>
       <h1>{p.name}</h1><span className="chip alt">{p.category}</span>
       <p>{p.summary}</p>
@@ -21,7 +28,7 @@ export function Workfolio() {
     </div>
   );
   return (
-    <div className="files" role="list">
+    <div className="files" role="list" ref={ref}>
       {projects.map((x) => (
         <button role="listitem" key={x.id} className="file" onClick={() => setSel(x.id)} onDoubleClick={() => setSel(x.id)}>
           <Icon name="folder" size={64} /><span>{x.name}</span><small>{x.category}</small>
