@@ -1,31 +1,84 @@
-# Murphy's Desktop Portfolio
+<div align="center">
 
-## Run on Windows (PowerShell / CMD / VS Code terminal)
-1. Install Node.js LTS from https://nodejs.org
-2. `npm install`
-3. `npm run dev` and open http://localhost:5173
-4. `npm run build` for production
+# 🌿 Murphy's Page
 
-## Edit your content
-Everything lives in `src/data/content.ts`: links, email, projects, skills, certifications.
-Anything in [brackets] is a placeholder. Your portrait is `public/murphy.png`.
+### A cozy little desktop you can explore
 
-## Add project screenshots and links
-1. Put images in `public/projects/<project-id>/` (e.g. `public/projects/artifact/1.jpg`).
-2. In `src/data/content.ts`, set `shots: [{ src: "/projects/artifact/1.jpg", caption: "Welcome screen" }]`, `repo: "https://github.com/jpillone09/<repo>"` and optionally `demo: "https://..."`.
+*Hi, I'm Murphy! Computer Science student, passionate about innovation, AI, and technology.*
 
-## Deploy to GitHub Pages
-See the steps in `.github/workflows/deploy.yml`: push to `main`, then set Settings > Pages > Source to "GitHub Actions".
+**[✨ Step inside: jpillone09.github.io](https://jpillone09.github.io)**
 
-## CV, sounds, certificate links
-- Replace `public/Murphy_CV.pdf` with your own CV (keep the file name).
-- Paste certificate links into `certs` in `src/data/content.ts`.
-- Sounds are generated in code (`src/lib/sound.ts`); visitors can mute with the speaker icon.
+</div>
 
-## Search (Spotlight)
-Press **Ctrl+K** (**Cmd+K** on Mac) or click the magnifier in the top bar. It finds apps, projects (by name, category or tech), skills, certifications, links and a few actions (theme, sound, download CV). Arrow keys move, Enter opens, Esc closes.
-To make something else searchable, add a line to `searchItems()` in `src/App.tsx`. Items marked `idle: true` also show before you type.
+---
 
-## Resizing windows
-Drag any edge or corner of a window. Minimum size is 320 x 220 and windows stay inside the screen. Maximize still fills the screen, and double-clicking the title bar still toggles it. Resizing is turned off on phones (width 760px or less), where windows are full-width.
+![Murphy OS desktop](public/projects/portfolio/1.jpg)
 
+## ☕ Welcome in
+
+Pull up a chair! Instead of a regular portfolio page, I built a tiny personal computer you can poke around in. Open a window, shuffle things around, and get to know me and my work at your own pace.
+
+## 🪟 What's on the desktop
+
+| App | What you'll find |
+| --- | --- |
+| **About Me** | A little intro, who I am, and what I'm aiming for |
+| **Workfolio** | My projects, each with screenshots, features, and links |
+| **Education & Skills** | Where I study, what I know, and my certifications |
+| **Contact Me** | The easiest ways to say hello |
+| **Murphy_CV.pdf** | Double-click the file on the desktop to read or download my CV |
+
+![Apps open in windows](public/projects/portfolio/2.jpg)
+
+## 🍃 Little things to try
+
+- **Drag, resize, minimize or maximize** any window, just like a real desktop
+- Press **Ctrl + K** (or **Cmd + K** on Mac) to search for anything: apps, projects, skills, links
+- Flip between **light and dark** with the sun/moon in the top bar
+- Turn the soft **sound effects** off (or back on) with the speaker icon
+- **Right-click** the desktop for a quick menu
+- Check **My garden**: my GitHub contributions, drawn as a patch of greens
+- Watch the **falling leaves**, and press **Esc** to close the front window
+
+## 🧰 Projects inside
+
+- **ArtiFact**: a gamified augmented reality system that identifies artworks at the National Museum of Fine Arts
+- **TwoTickets**: a private, couples-oriented movie diary inspired by Letterboxd
+- **This portfolio**: the very desktop you're looking at
+
+Open **Workfolio** on the site to see screenshots and more details for each one.
+
+## 🛠️ Built with
+
+React · TypeScript · Vite · Framer Motion
+
+The icons are hand-drawn, the sounds are generated right in the browser with the Web Audio API, and the site lives on GitHub Pages.
+
+<details>
+<summary><b>Want to run it on your own computer?</b></summary>
+
+<br>
+
+1. Install [Node.js](https://nodejs.org) (LTS)
+2. Clone this repo and open the folder in a terminal
+3. Run `npm install`
+4. Run `npm run dev` and open the address it shows (usually http://localhost:5173)
+
+</details>
+
+## 💌 Say hello
+
+Have a project in mind? Let's connect!
+
+- 📧 [jpillone09@gmail.com](mailto:jpillone09@gmail.com)
+- 💼 [LinkedIn](https://www.linkedin.com/in/jpillone09)
+- 🐙 [GitHub](https://github.com/jpillone09)
+- 👋 [Facebook](https://www.facebook.com/johnmurphy.pillone.7)
+
+---
+
+<div align="center">
+
+*Portrait artwork by [Kate](https://www.linkedin.com/in/katelyn-ong-iko-86173b432/). Thanks for visiting, and stay as long as you like.* 🌱
+
+</div>
