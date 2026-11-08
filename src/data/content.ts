@@ -30,5 +30,5 @@ export const skills: Record<string, string[]> = {
   "Hobbies & Interests": ["Game Development", "Web Development", "Video Editing", "Culinary Arts"],
 };
 export const certs = ["Certiport IT Specialist – Java", "Certiport IT Specialist – Python", "Cisco Networking Specialist", "Certificate of Excellence – Design Thinking"];
-export const note = { title: "Currently", items: ["Studying Software Engineering", "Building this portfolio", "[Add what you're learning]"] };
+export const note = { title: "Currently", items: ["Studying Software Engineering", "Studying Business Analytics", "Building this portfolio"] };
 export const githubUser = "jpillone09";
