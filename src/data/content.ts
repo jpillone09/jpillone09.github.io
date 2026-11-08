@@ -29,6 +29,12 @@ export const skills: Record<string, string[]> = {
   "Soft Skills": ["Optimistic", "Adaptability", "Hard-Working", "Modest", "Communication", "Team Collaboration"],
   "Hobbies & Interests": ["Game Development", "Web Development", "Video Editing", "Culinary Arts"],
 };
-export const certs = ["Certiport IT Specialist – Java", "Certiport IT Specialist – Python", "Cisco Networking Specialist", "Certificate of Excellence – Design Thinking"];
+// Paste each certificate's verification / badge link into url. Without a url it shows as plain text.
+export const certs: { name: string; url?: string }[] = [
+  { name: "Certiport IT Specialist – Java", url: "" },
+  { name: "Certiport IT Specialist – Python", url: "" },
+  { name: "Cisco Networking Specialist", url: "" },
+  { name: "Certificate of Excellence – Design Thinking", url: "" },
+];
 export const note = { title: "Currently", items: ["Studying Software Engineering", "Studying Business Analytics", "Building this portfolio"] };
 export const githubUser = "jpillone09";

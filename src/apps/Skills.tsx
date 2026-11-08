@@ -11,7 +11,9 @@ export function Skills() {
         <div key={k}><h3>{k}</h3><div className="chips">{v.map((s) => <span className="chip" key={s}>{s}</span>)}</div></div>
       ))}
       <h2><Icon name="award" size={22} /> Certifications</h2>
-      <ul>{certs.map((c) => <li key={c}>{c}</li>)}</ul>
+      <ul>{certs.map((c) => (
+        <li key={c.name}>{c.url ? <a href={c.url} target="_blank" rel="noreferrer">{c.name} <Icon name="external" size={14} /></a> : c.name}</li>
+      ))}</ul>
     </div>
   );
 }

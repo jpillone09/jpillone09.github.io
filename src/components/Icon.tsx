@@ -17,6 +17,10 @@ const P = {
   cap: <><path className="acc" d="M12 5L2.500 10 12 15l9.500-5z" /><path d="M6 12.500V17c0 1.500 3 3 6 3s6-1.500 6-3v-4.500" /></>,
   leaf: <><path className="acc" d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14z" /><path d="M5 19l8-8" /></>,
   music: <><path d="M9 17V6l10-2v11" /><circle className="acc" cx="7" cy="17" r="2.5" /><circle className="acc" cx="17" cy="15" r="2.5" /></>,
+  doc: <><path className="acc" d="M6 3.5h8.5L19 8v12.5H6z" /><path d="M14.5 3.5V8H19M9 13h7M9 16.5h5" /></>,
+  download: <path d="M12 4v11M7 11l5 5 5-5M5 20h14" />,
+  volume: <><path className="acc" d="M4 9.5v5h3.5l4.5 4v-13l-4.5 4z" /><path d="M15.500 9a4 4 0 0 1 0 6M18 6.500a8 8 0 0 1 0 11" /></>,
+  mute: <><path className="acc" d="M4 9.5v5h3.5l4.5 4v-13l-4.5 4z" /><path d="M16 9.500l5 5M21 9.500l-5 5" /></>,
   back: <path d="M19 12H5M11 6l-6 6 6 6" />,
   external: <path d="M14 4h6v6M20 4l-9 9M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4" />,
 };

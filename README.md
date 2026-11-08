@@ -16,3 +16,8 @@ Anything in [brackets] is a placeholder. Your portrait is `public/murphy.png`.
 
 ## Deploy to GitHub Pages
 See the steps in `.github/workflows/deploy.yml`: push to `main`, then set Settings > Pages > Source to "GitHub Actions".
+
+## CV, sounds, certificate links
+- Replace `public/Murphy_CV.pdf` with your own CV (keep the file name).
+- Paste certificate links into `certs` in `src/data/content.ts`.
+- Sounds are generated in code (`src/lib/sound.ts`); visitors can mute with the speaker icon.
