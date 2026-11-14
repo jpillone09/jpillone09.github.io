@@ -23,6 +23,8 @@ const P = {
   mute: <><path className="acc" d="M4 9.5v5h3.5l4.5 4v-13l-4.5 4z" /><path d="M16 9.500l5 5M21 9.500l-5 5" /></>,
   back: <path d="M19 12H5M11 6l-6 6 6 6" />,
   search: <><circle className="acc" cx="11" cy="11" r="6.500" /><path d="M16 16l4.500 4.500" /></>,
+  copy: <><rect className="acc" x="8.5" y="8.5" width="11" height="11" rx="2.5" /><path d="M15.5 8.5V6.5A2.500 2.500 0 0 0 13 4H6.500A2.500 2.500 0 0 0 4 6.500V13a2.500 2.500 0 0 0 2.500 2.500h2" /></>,
+  check: <path d="M5 12.500l4.500 4.500L19 7.500" />,
   external: <path d="M14 4h6v6M20 4l-9 9M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4" />,
 };
 export type IconName = keyof typeof P;

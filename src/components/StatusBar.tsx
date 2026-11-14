@@ -11,7 +11,7 @@ export function StatusBar({ theme, onToggle, muted, onMute, onSearch }: Props) {
     <header className="status">
       <div className="left">
         <b className="clock">{t.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}</b>
-        <i className="dot" aria-label="New notification" />
+        <i className="dot" aria-hidden="true" />
         <span className="brand">Murphy's Page</span>
         <a className="ic" href={links.github} target="_blank" rel="noreferrer" aria-label="GitHub"><Icon name="github" /></a>
         <a className="ic" href={`mailto:${links.email}`} aria-label="Email"><Icon name="mail" /></a>

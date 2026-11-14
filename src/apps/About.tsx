@@ -7,13 +7,12 @@ export function About() {
       </figure>
       <div>
         <h1>Hi, I'm Murphy!</h1>
-        <p className="sub">Computer Science Student | Passionate about Technology, Innovation, and Problem-Solving</p>
+        <p className="sub">Computer Science Student | Aspiring Business Analyst</p>
         <p>I'm a Computer Science student at Far Eastern University Alabang, specializing in Software Engineering.</p>
-        <p>I'm interested in software development and technology, from game development and web development to video editing.
-          and gaining inspiration from the world of technology. I enjoy learning new skills and applying them to real-world projects, 
+        <p>I'm interested in software development and technology, from game development and web development to video editing, and gaining inspiration from the world of technology. I enjoy learning new skills and applying them to real-world projects,
           as well as collaborating with others to create innovative solutions.
         </p>
-        <p>I'm aiming to grow into a business analyst. To learn more about the field and gain relevant experience.</p>
+        <p>I'm aiming to grow into a business analyst, learning more about the field and gaining relevant experience.</p>
       </div>
     </div>
   );

@@ -2,13 +2,14 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { AnimatePresence } from "framer-motion";
 import { StatusBar } from "./components/StatusBar";
 import { Dock } from "./components/Dock";
-import { Window, type Box, type WS } from "./components/Window";
+import { Window, type WS } from "./components/Window";
 import { Widgets } from "./components/Widgets";
 import { Leaves } from "./components/Leaves";
 import { Note } from "./components/Note";
 import { Boot } from "./components/Boot";
 import { Spotlight, type SpotItem } from "./components/Spotlight";
 import { DesktopIcon } from "./components/DesktopIcon";
+import { ContextMenu } from "./components/ContextMenu";
 import { Icon, type IconName } from "./components/Icon";
 import { About } from "./apps/About";
 import { Workfolio, type ProjectReq } from "./apps/Workfolio";
@@ -30,6 +31,12 @@ const apps: AppDef[] = [
 const init = (): Record<string, WS> =>
   Object.fromEntries(apps.map((a, i) => [a.id, { open: false, min: false, max: false, z: 0, x: 150 + i * 44, y: 80 + i * 32 }]));
 
+// A window that opens fresh is nudged so it never sits under the dock or past the screen edge on smaller laptops.
+const fitOnScreen = (s: WS): Partial<WS> => {
+  const ww = Math.min(640, window.innerWidth * 0.92), wh = Math.min(460, window.innerHeight * 0.7);
+  return { x: Math.max(8, Math.min(s.x, window.innerWidth - ww - 8)), y: Math.max(50, Math.min(s.y, window.innerHeight - wh - 100)) };
+};
+
 export default function App() {
   const [w, setW] = useState(init);
   const [menu, setMenu] = useState<{ x: number; y: number } | null>(null);
@@ -48,6 +55,7 @@ export default function App() {
   });
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "dark" ? "#1d2a20" : "#e6ffc4");
     try { localStorage.setItem("theme", theme); } catch { /* ignore */ }
   }, [theme]);
 
@@ -57,7 +65,7 @@ export default function App() {
 
   const patch = (id: string, p: Partial<WS>) => setW((s) => ({ ...s, [id]: { ...s[id], ...p } }));
   const focus = (id: string) => patch(id, { z: ++zr.current });
-  const launch = (id: string) => { if (!w[id].open || w[id].min) play("open"); patch(id, { open: true, min: false, z: ++zr.current }); };
+  const launch = (id: string) => { if (!w[id].open || w[id].min) play("open"); patch(id, { open: true, min: false, z: ++zr.current, ...(w[id].open ? {} : fitOnScreen(w[id])) }); };
   const minimize = (id: string) => { play("min"); patch(id, { min: true }); };
   const closeWin = (id: string) => { play("close"); if (id === "work") setProjReq(null); patch(id, { open: false, max: false }); };
   const opened = apps.filter((a) => w[a.id].open);
@@ -70,11 +78,11 @@ export default function App() {
   useEffect(() => {
     const k = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") { e.preventDefault(); if (!booting) { if (spot) setSpot(false); else openSearch(); } return; }
-      if (e.key === "Escape" && top && !spot && !e.defaultPrevented) closeWin(top); // Esc belongs to the search box while it is open
+      if (e.key === "Escape" && !spot && !e.defaultPrevented) { if (menu) setMenu(null); else if (top) closeWin(top); } // Esc belongs to the search box while it is open
     };
     window.addEventListener("keydown", k);
     return () => window.removeEventListener("keydown", k);
-  }, [top, spot, booting]);
+  }, [top, spot, booting, menu]);
 
   // Everything the search box can find. Add a line here to make something searchable.
   const searchItems = (): SpotItem[] => {
@@ -110,17 +118,15 @@ export default function App() {
           <Window key={a.id} title={a.title} icon={a.img ? <img src={a.img} alt="" width={20} height={20} /> : <Icon name={a.icon!} size={18} />}
             s={w[a.id]} focused={top === a.id} onFocus={() => focus(a.id)} onClose={() => closeWin(a.id)}
             onMin={() => minimize(a.id)} onMax={() => { play("max"); patch(a.id, { max: !w[a.id].max }); }}
-            onMove={(x, y) => patch(a.id, { x, y })} onResize={(b: Box) => patch(a.id, b)}>{a.id === "work" ? <Workfolio request={projReq} /> : a.node}</Window>
+            onMove={(x, y) => patch(a.id, { x, y })}>{a.id === "work" ? <Workfolio request={projReq} /> : a.node}</Window>
         ))}
       </AnimatePresence>
       <Dock items={docked.map((a) => ({ id: a.id, label: a.title, img: a.img! }))} open={docked.filter((a) => w[a.id].open).map((a) => a.id)} active={top} onPick={pick} />
-      {menu && (
-        <ul className="ctx" style={{ left: menu.x, top: menu.y }}>
-          <li><button onClick={openSearch}>Search… <small>{mod} K</small></button></li>
-          {apps.map((a) => <li key={a.id}><button onClick={() => launch(a.id)}>Open {a.title}</button></li>)}
-          <li><button onClick={toggle}>Switch to {theme === "dark" ? "light" : "dark"} mode</button></li>
-        </ul>
-      )}
+      {menu && <ContextMenu x={menu.x} y={menu.y} items={[
+        { label: "Search…", hint: `${mod} K`, run: openSearch },
+        ...apps.map((a) => ({ label: `Open ${a.title}`, run: () => launch(a.id) })),
+        { label: `Switch to ${theme === "dark" ? "light" : "dark"} mode`, run: toggle },
+      ]} />}
       <AnimatePresence>{spot && <Spotlight items={searchItems()} onClose={() => setSpot(false)} />}</AnimatePresence>
       <AnimatePresence>{booting && <Boot onDone={finishBoot} />}</AnimatePresence>
     </div>

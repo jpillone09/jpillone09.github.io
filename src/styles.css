@@ -20,7 +20,7 @@ a{color:inherit}
 .dk:hover{transform:translateY(-6px) scale(1.12)}
 .dk.active{background:rgba(255,255,255,.65)}
 .pip{position:absolute;bottom:2px;width:5px;height:5px;border-radius:50%;background:var(--ink)}
-.win{position:fixed;width:var(--w,min(640px,92vw));height:var(--h,min(460px,70vh));display:flex;flex-direction:column;background:var(--win);border-radius:16px;overflow:visible;box-shadow:0 8px 24px rgba(60,80,30,.18)}
+.win{position:fixed;width:min(640px,92vw);height:min(460px,70vh);display:flex;flex-direction:column;background:var(--win);border-radius:16px;overflow:hidden;box-shadow:0 8px 24px rgba(60,80,30,.18)}
 .win.focus{box-shadow:0 14px 34px rgba(60,80,30,.3)}
 .win.max{left:10px!important;top:50px!important;width:calc(100vw - 20px);height:calc(100vh - 130px)}
 .bar{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--green);cursor:grab;user-select:none;touch-action:none}
@@ -190,18 +190,7 @@ body,.desktop,.win,.bar,.dock,.note{transition:background-color .35s,color .35s,
 .notes li a:hover{text-decoration-color:var(--ink)}
 @media (max-width:900px){.dicons{top:64px;right:16px}}
 
-/* v14: resizable windows + spotlight search */
-/* Windows no longer clip, so the resize handles can sit on the edge; the bar and body round their own corners. */
-.bar{border-radius:20px 20px 0 0}
-.body{border-radius:0 0 20px 20px}
-.rz{position:absolute;z-index:6;touch-action:none}
-.rz.n,.rz.s{left:18px;right:18px;height:10px;cursor:ns-resize}.rz.n{top:-5px}.rz.s{bottom:-5px}
-.rz.e,.rz.w{top:18px;bottom:18px;width:10px;cursor:ew-resize}.rz.e{right:-5px}.rz.w{left:-5px}
-.rz.ne,.rz.nw,.rz.se,.rz.sw{width:20px;height:20px}
-.rz.ne{top:-5px;right:-5px;cursor:nesw-resize}.rz.sw{bottom:-5px;left:-5px;cursor:nesw-resize}
-.rz.nw{top:-5px;left:-5px;cursor:nwse-resize}.rz.se{bottom:-5px;right:-5px;cursor:nwse-resize}
-@media (max-width:760px){.rz{display:none}}
-
+/* v14: spotlight search */
 .spot{position:fixed;inset:0;z-index:15000;display:flex;justify-content:center;align-items:flex-start;padding:14vh 12px 0;background:rgba(var(--ink-rgb),.22);backdrop-filter:blur(3px)}
 .sp{width:min(560px,100%);background:var(--win);border:1.5px solid rgba(var(--ink-rgb),.18);border-radius:22px;box-shadow:0 18px 44px rgba(60,80,30,.32);overflow:hidden}
 .spq{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1.5px solid rgba(var(--ink-rgb),.1);color:var(--leaf-line)}
@@ -225,3 +214,44 @@ kbd{font:inherit;font-weight:600;padding:1px 6px;border-radius:6px;background:rg
 @media (hover:hover) and (pointer:fine){.kbdhint{display:inline}}
 @media (hover:none){.spf{display:none}}
 .ctx small{margin-left:14px;opacity:.55}
+
+/* v15: finishing touches */
+:root{color-scheme:light}
+[data-theme="dark"]{color-scheme:dark}
+*{scrollbar-width:thin;scrollbar-color:rgba(var(--ink-rgb),.28) transparent}
+html{-webkit-text-size-adjust:100%}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:var(--accent);color:#1c1c1c}
+button,a{-webkit-tap-highlight-color:transparent}
+.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.clock{white-space:nowrap}
+.bar:active{cursor:grabbing}
+.boot:focus-visible{outline:0}
+
+/* dock labels: a proper tooltip on hover and keyboard focus (touch screens skip it) */
+.dk::after{content:attr(data-label);position:absolute;bottom:calc(100% + 14px);left:50%;translate:-50% 4px;padding:4px 10px;border-radius:10px;background:var(--ink);color:var(--win);font-size:.75rem;font-weight:600;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s,translate .15s}
+.dk:hover::after,.dk:focus-visible::after{opacity:1;translate:-50% 0}
+@media (hover:none){.dk::after{display:none}}
+
+/* press feedback */
+.btn:active{transform:none}
+.file:active,.shortcuts a:active,.dk:active{transform:scale(.96)}
+
+/* desktop icon label no longer breaks mid-word ("Murphy_CV.p / df") */
+.dicons{right:38px}
+.dicon{width:112px;word-break:normal;overflow-wrap:anywhere}
+
+/* right-click menu: full width of its content, so it can't squash against the screen edge */
+.ctx{width:max-content;min-width:200px;max-width:calc(100vw - 16px)}
+.ctx small{opacity:.55}
+
+/* contact: copyable email */
+.mailrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:6px}
+.mailrow code{font:inherit;font-weight:600;user-select:all;padding:7px 14px;border-radius:99px;background:rgba(var(--ink-rgb),.07);overflow-wrap:anywhere}
+.mailrow .btn{padding:7px 14px}
+
+/* phones: the status bar was overflowing (clock wrapped, battery pushed off-screen), so drop the decorative wifi/battery */
+@media (max-width:760px){.status .right>span.ic{display:none}}
+@media (max-width:385px){
+  .status{padding:0 10px}.status .left,.status .right{gap:4px}.status .ic{width:32px;height:32px}
+}

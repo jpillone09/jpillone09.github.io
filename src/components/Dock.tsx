@@ -3,7 +3,7 @@ export function Dock({ items, open, active, onPick }: { items: DockItem[]; open:
   return (
     <nav className="dock" aria-label="Applications">
       {items.map(({ id, label, img }) => (
-        <button key={id} className={`dk ${active === id ? "active" : ""}`} onClick={() => onPick(id)} aria-label={label} title={label}>
+        <button key={id} className={`dk ${active === id ? "active" : ""}`} onClick={() => onPick(id)} aria-label={label} data-label={label}>
           <img src={img} alt="" width={42} height={42} draggable={false} />
           {open.includes(id) && <i className="pip" />}
         </button>

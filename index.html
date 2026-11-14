@@ -4,8 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Murphy OS</title>
+    <meta name="description" content="Portfolio of Murphy, a Computer Science student (Software Engineering) and aspiring business analyst. Projects, skills and ways to get in touch." />
+    <meta name="theme-color" content="#e6ffc4" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icons/about.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Murphy OS" />
+    <meta property="og:description" content="A pastel desktop-style portfolio: projects, skills and contact, all in draggable windows." />
+    <meta property="og:url" content="https://jpillone09.github.io" />
+    <meta property="og:image" content="https://jpillone09.github.io/murphy.png" />
+    <meta name="twitter:card" content="summary" />
+    <!-- Sets the theme before the first paint so dark-mode visitors never see a light flash. Same rule as App.tsx. -->
+    <script>
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = t;
+        document.querySelector('meta[name="theme-color"]').setAttribute("content", t === "dark" ? "#1d2a20" : "#e6ffc4");
+      } catch (e) {}
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   </head>
-  <body><div id="root"></div><script type="module" src="/src/main.tsx"></script></body>
+  <body>
+    <div id="root"></div>
+    <noscript><p style="font-family:system-ui,sans-serif;text-align:center;padding:4rem 1rem">Murphy OS needs JavaScript to run. Please enable it, or find me on <a href="https://github.com/jpillone09">GitHub</a>.</p></noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
